@@ -1,0 +1,13 @@
+CREATE TABLE items (
+	id         BIGSERIAL PRIMARY KEY,
+	content    BYTEA NOT NULL,
+	filename   TEXT NOT NULL,
+	mimetype   TEXT NOT NULL,
+	digest     TEXT UNIQUE NOT NULL,
+	label      TEXT UNIQUE NOT NULL,
+	destruct   BOOLEAN NOT NULL,
+	private    BOOLEAN NOT NULL,
+	is_url     BOOLEAN NOT NULL,
+	sunset     TIMESTAMP WITH TIME ZONE,
+	timestamp  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);

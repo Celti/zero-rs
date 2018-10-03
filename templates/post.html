@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<title>pastebin</title>
+</head>
+
+<body>
+	<div class="container">
+		<form class="m-4" action="/" enctype="multipart/form-data" method="post" novalidate>
+			<div class="row mb-2">
+				<textarea class="form-control" name="c" rows="20" placeholder="Paste your content here..." required></textarea>
+				<input type="text" id="paste-url" class="form-control" name="u" placeholder="...or enter a URL to shorten...">
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" id="paste-content-file" name="c">
+					<label class="custom-file-label" for="paste-content-file">...or select a file to upload.</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-5">
+					<label for="paste-label">Label</label>
+					<input type="text" id="paste-label" class="form-control" name="label" placeholder="Label">
+					<small class="form-text text-muted">A custom "vanity" label for the paste. Optional.</small>
+				</div>
+				<div class="col-md-5">
+					<label for="paste-sunset">Expires</label>
+					<input type="number" id="paste-sunset" class="form-control" name="sunset" placeholder="Expires">
+					<small class="form-text text-muted">Time before the paste expires, in minutes. Optional.</small>
+				</div>
+				<div class="col-md-2 text-center">
+					<div class="btn-group-vertical">
+						<div class="btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-outline-danger" for="paste-destruct">
+								<input type="checkbox" name="destruct" id="paste-destruct">Burn After Reading
+							</label>
+							<label class="btn btn-outline-warning" for="paste-private">
+								<input type="checkbox" name="private" id="paste-private">Long ID Only
+							</label>
+						</div>
+						<input class="btn btn-success" type="submit" id="paste-submit" value="Submit Paste">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
