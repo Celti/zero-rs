@@ -1,6 +1,8 @@
 # Zero
 A pastebin, URL shortener, and filehost, written in [Rust](https://www.rust-lang.org) using [Warp](https://github.com/seanmonstar/warp) and [Diesel](https://github.com/diesel-rs/diesel).
 
+See a live instance at [https://0.celti.name](https://0.celti.name).
+
 ## Basic Usage
 Paste the output of `${CMD}`.
 ```sh
@@ -48,6 +50,22 @@ Creates a post that will be automatically deleted in `${min}` minutes.
 curl -F private=true -F c=@${FILE} https://0.celti.name
 ```
 Creates a post that can only be accessed by its long ID.
+
+## Deployment
+Zero stores configuration in the environment according to the basic tenets of a [Twelve-Factor App](https://12factor.net/config). It will fall back to reading variables from `.env` in the current working directory.
+* **DATABASE_URL:** The connection string for the database.
+* **LISTEN_ADDR:** The socket for Zero to listen on; accepts any valid string for the Rust [`ToSocketAddrs` trait](https://doc.rust-lang.org/std/net/trait.ToSocketAddrs.html).
+* **ZERO_SALT:** A salt used when constructing long IDs to store in the database.
+* **ZERO_URL:** The _public_ URL that Zero is running at, minus the protocol (which is always HTTPS). Used to construct returned URLs.
+
+```
+DATABASE_URL="postgres://dbuser:dbpass@dbhost/dbname"
+LISTEN_ADDR="localhost:8080"
+ZERO_SALT="c28gdmVyeSBzYWx0eQA"
+ZERO_URL="zero.example"
+```
+
+Currently, [PostgreSQL](https://postgresql.org/) is the only supported database backend. The required database schema is in [migrations/00000000000001_zero_initial_setup/up.sql]; you can automatically apply it with [`diesel-cli`](https://crates.io/crates/diesel_cli).
 
 ## Unlicense and Copyright
 This is free and unencumbered software released into the public domain.
